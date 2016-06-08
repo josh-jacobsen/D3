@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel-node",
     "start": "babel-node index.js"
-
   },
   "repository": {
     "type": "git",
@@ -20,14 +19,17 @@
   },
   "homepage": "https://github.com/josh-jacobsen/project#readme",
   "dependencies": {
-    "pdf2json": "^1.1.5"
+    "pdf2json": "^1.1.5",
+    "pdf2table": "0.0.1",
+    "tabula-js": "^1.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-preset-es2015": "^6.9.0"
-
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   }
 }

@@ -20,10 +20,10 @@ let pdfParser = new PDFParser();
 
 pdfParser.on("pdfParser_dataError", errData => console.error(errData.parserError));
 pdfParser.on("pdfParser_dataReady", pdfData => {
-  fs.writeFile("./output/nzdf2015.json", JSON.stringify(pdfData));
+  fs.writeFile("./output/nzdf2015_108.json", JSON.stringify(pdfData));
 });
 
-pdfParser.loadPDF("./pdf/nzdf_report_2015.pdf");
+pdfParser.loadPDF("./pdf/nzdf_report_2015_108.pdf");
 
 
 
