@@ -21,24 +21,23 @@ import fs from 'fs'
 // template for tables
 
 fs.readFile('./output/nzdf2015_108.json', (err, data) => {
+    let myArray = []
     if (err) throw err;
     let test = JSON.parse(data)
     let num = test.formImage.Pages[0].Texts.length
     let totalText = ''
     for (let i = 0; i < test.formImage.Pages[0].Texts.length; i++) {
       let text = test.formImage.Pages[0].Texts[i].R[0].T;
-      text = text.replace(/%20/g, ' ')
-      text = text.replace(/%2C/g, ',')
-      text = text.replace(/%2F/g, '/')
-
-      // console.log(typeof text);
+      text = text.replace(/%20|%2C|%2F/g, ' ')
       console.log(text);
+      myArray.push(text)
       totalText += text
     }
     // let decoded = (decodeURI(totalText))
-    // fs.writeFile('./output/nzdf2015_108.txt', decoded, (err) => {
-    //   if (err) throw err;
-    // })
+    console.log(myArray);
+    fs.writeFile('./output/nzdf2015_108.js', JSON.stringify(myArray), (err) => {
+      if (err) throw err;
+    })
 
   })
   // fs.readFile('./output/nzdf2015.json', (err, data) => {
