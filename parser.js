@@ -1,26 +1,9 @@
 import fs from 'fs'
 
-// template for text
-//
-// fs.readFile('./output/nzdf2015_108.json', (err, data) => {
-//   if (err) throw err;
-//   let test = JSON.parse(data)
-//   let num = test.formImage.Pages[0].Texts.length
-//   let totalText = ''
-//   for (let i = 0; i < test.formImage.Pages[0].Texts.length; i++) {
-//     let text = test.formImage.Pages[0].Texts[i].R[0].T;
-//     totalText += text
-//   }
-//   let decoded = (decodeURI(totalText))
-//   fs.writeFile('./output/nzdf2015_108.txt', decoded, (err) => {
-//     if (err) throw err;
-//   })
-// })
+let input = "./output/nzdf_report_2015_110.json"
+let output = "./output/nzdf2015_110.js"
 
-
-// template for tables
-
-fs.readFile('./output/nzdf2015_108.json', (err, data) => {
+fs.readFile(input, (err, data) => {
     let myArray = []
     if (err) throw err;
     let test = JSON.parse(data)
@@ -29,31 +12,10 @@ fs.readFile('./output/nzdf2015_108.json', (err, data) => {
     for (let i = 0; i < test.formImage.Pages[0].Texts.length; i++) {
       let text = test.formImage.Pages[0].Texts[i].R[0].T;
       text = text.replace(/%20|%2C|%2F/g, ' ')
-      console.log(text);
       myArray.push(text)
       totalText += text
     }
-    // let decoded = (decodeURI(totalText))
-    console.log(myArray);
-    fs.writeFile('./output/nzdf2015_108.js', JSON.stringify(myArray), (err) => {
+    fs.writeFile(output, JSON.stringify(myArray), (err) => {
       if (err) throw err;
     })
-
   })
-  // fs.readFile('./output/nzdf2015.json', (err, data) => {
-  //     if (err) throw err;
-  //     let test = JSON.parse(data)
-  //     console.log(test.formImage.Pages[0].Texts[0]);
-  //   })
-  //   // let num = test.formImage.Pages[0].Texts.length
-  // let totalText = ''
-  // for (let i = 0; i < test.formImage.Pages[0].Texts.length; i++) {
-  //   let text = test.formImage.Pages[0].Texts[i].R[0].T;
-  //   totalText += text
-  // }
-  // let decoded = (decodeURI(totalText))
-  // fs.writeFile('./output/budget2015.txt', decoded, (err) => {
-  // if (err) throw err;
-  // })
-  //
-  // })
