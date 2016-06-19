@@ -1,4 +1,3 @@
-
 // var d3 = require("d3"),
 //     jsdom = require("jsdom");
 //
@@ -26,13 +25,13 @@ var myScale = d3.scale.linear()
   .range([110, 300])
 
 mySvg.selectAll("rect")
-    .data(myData)
+  .data(myData)
   .enter().append("rect")
-    .attr("x", myScale)
-    // .attr("x", function (d) {return myScale(d); })
-    .attr("y", 50)
-    .attr("width", 20)
-    .attr("height", 20)
+  .attr("x", myScale)
+  // .attr("x", function (d) {return myScale(d); })
+  .attr("y", 50)
+  .attr("width", 20)
+  .attr("height", 20)
 
 
 function render(data) {
@@ -47,9 +46,9 @@ function type(d) {
 
 
 var scatterSvg = d3.select(".scatter").append("svg")
-.attr("width", outerWidth)
-.attr("height", outerHeight)
+  .attr("width", outerWidth)
+  .attr("height", outerHeight)
 
 
 
-d3.csv("../data/testData.csv", type, render)
+d3.csv("../data/petals.csv", type, render)
