@@ -47,15 +47,16 @@ var scatterSvg = d3.select(".scatter").append("svg")
   .attr("height", outerHeight)
 
 var xScale = d3.scale.linear().range([0, outerWidth])
-var yScale = d3.scale.linear().range([0, outerHeight])
+var yScale = d3.scale.linear().range([outerHeight, 0])
+
 
 function render(data) {
-    var projectLength = d3.extent(data, function (d) {return d.time_weeks})
-    var percentComplete = d3.extent(data, function (d) {return d.percent_complete})
-    console.log("project length", projectLength,"percent complete", percentComplete);
+    // var projectLength = d3.extent(data, function (d) {return d.time_weeks})
+    // var percentComplete = d3.extent(data, function (d) {return d.percent_complete})
+    // console.log("project length", projectLength,"percent complete", percentComplete);
 
-    xScale.domain(d3.extent(data, function (d) {return d.time_weeks}))
-    yScale.domain(d3.extent(data, function (d) {return d.percent_complete}))
+    xScale.domain(d3.extent(data, function (d) {return d.time_weeks; }))
+    yScale.domain(d3.extent(data, function (d) {return d.percent_complete; }))
 
     console.log(data);
     // Bind data
@@ -67,11 +68,11 @@ function render(data) {
 
     //Update
     circles
-      .attr("cx", function (d) {return d.time_weeks;})
-      .attr("cy", function (d) {return d.percent_complete})
+      .attr("cx", function (d) {return xScale(d.time_weeks);})
+      .attr("cy", function (d) {return yScale(d.percent_complete);})
 
     //Exit
-    // circles.exit.remove();
+    circles.exit.remove();
 };
 
 function type(d) {
