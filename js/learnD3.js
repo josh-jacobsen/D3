@@ -32,7 +32,7 @@
 //   .attr("y", 50)
 //   .attr("width", 20)
 //   .attr("height", 20)
-
+//
 
 // var svg = d3.select(".main").append("svg")
 //   .attr("width", 600)
@@ -40,11 +40,13 @@
 //   .attr("id", "mySvg")
 
 var outerWidth = 500;
-var outerHeight = 500;
+var outerHeight = 600;
+var circleRadius = 7;
 
 var scatterSvg = d3.select(".scatter").append("svg")
   .attr("width", outerWidth)
   .attr("height", outerHeight)
+  .attr("id", "scatter")
 
 var xScale = d3.scale.linear().range([0, outerWidth])
 var yScale = d3.scale.linear().range([outerHeight, 0])
@@ -64,7 +66,7 @@ function render(data) {
 
     //Enter
     circles.enter().append("circle")
-      .attr("r", 10)
+      .attr("r", circleRadius)
 
     //Update
     circles
