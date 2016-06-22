@@ -5,3 +5,9 @@
 #scatter {
   border: 1px solid red;
 }
+
+circle {
+  fill: none;
+  /*stroke: blue;*/
+  stroke-width: 2px;
+}
