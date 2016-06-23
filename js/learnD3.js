@@ -96,7 +96,24 @@ function render(data) {
 
   // enter
   bars.enter().append("rect")
+    .attr("width", xScale.rangeBand());
+
+  // Update
+  
+  bars
+    .attr("x", function (d) {return xScale(d[xColumn]); })
+    .attr("y", function (d) {return yScale(d[yColumn]); })
+    .attr("height", function (d) {return barInnerHeight - yScale(d[yColumn])})
+
+
+
 }
 
+
+function type(d){
+  d.year = +d.year;
+  d.budget = +d.budget;
+  return d;
+}
 
 d3.csv("../data/yearOnYear.csv", type, render)
