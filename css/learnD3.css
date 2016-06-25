@@ -6,7 +6,16 @@
   border: 1px solid red;
 }
 
+#bar {
+  border: 1px solid red;
+}
+
 circle {
+  fill: hsla(0, 0%, 0%, 0.0);;
   stroke-width: 3px;
 
+}
+
+.line {
+  height: 1000px;
 }

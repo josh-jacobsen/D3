@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel-node",
-    "server": "http-server ."
-
+    "server": "http-server .",
+    "build": "browserify js/learnD3 > bundle.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/josh-jacobsen/project#readme",
   "dependencies": {
+    "browserify": "^13.0.1",
     "d3": "^3.5.17",
     "http-server": "^0.9.0",
     "jsdom": "^9.2.1",
