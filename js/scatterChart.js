@@ -78,16 +78,6 @@ function scatterType(d) {
   return d
 };
 
-
-
-
-
-
-
-
-
-
-
 module.exports = {
   scatterRender: scatterRender,
   scatterType: scatterType

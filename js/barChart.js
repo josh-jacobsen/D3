@@ -57,8 +57,7 @@ function barType(d){
   return d;
 }
 
-
 module.exports = {
   barRender: barRender,
-  barType: barType  
+  barType: barType
 }
