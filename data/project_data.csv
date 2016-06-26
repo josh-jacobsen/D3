@@ -1,6 +1,6 @@
 project_cost,percent_complete,time_weeks,name,category
-43,12,51,boots,clothing
-45,18,49,helmets,protective
+43,12,45,boots,clothing
+45,18,60,helmets,protective
 23,55,3,rifles,weapons
 26,81,8,armour,protective
 6,72,4,gloves,clothing
@@ -32,4 +32,4 @@ project_cost,percent_complete,time_weeks,name,category
 54,31,65,NH-90,vehicles
 53,39,45,bandages,misc
 26,78,36,morphine,misc
-27,26,10,whiskey,misc
+27,99,10,whiskey,misc

@@ -1,8 +1,8 @@
 // Bar chart
 
-var barOuterWidth = 1000;
+var barOuterWidth = 960;
 var barOuterHeight = 500;
-var barMargin = {top: 25, bottom: 25, left: 25, right: 25}
+var barMargin = {top: 25, bottom: 25, left: 50, right: 25}
 var barPadding = 0.2;
 
 var barInnerWidth = barOuterWidth - barMargin.left - barMargin.right;
@@ -10,6 +10,12 @@ var barInnerHeight = barOuterHeight - barMargin.top - barMargin.bottom;
 
 var barxColumn = "year";
 var baryColumn = "budget";
+
+var xAxisLabelText = "Year"
+var xAxisLabelOffset = 10;
+
+var yAxisLabelText = "Budget";
+var yAxisLabelOffset = 10;
 
 var barSvg = d3.select(".bar").append("svg")
   .attr("width", barOuterWidth)
@@ -21,6 +27,11 @@ var barG = barSvg.append("g")
 
 var barXAxisG = barG.append("g")
   .attr("transform", "translate(0," + barInnerHeight + ")");
+
+var barXAxisLabel = barXAxisG.append("text")
+
+
+
 var barYAxisG = barG.append("g");
 
 var barxScale = d3.scale.ordinal().rangeBands([0, barInnerWidth], barPadding);
@@ -49,6 +60,7 @@ function barRender(data) {
     .attr("x", function (d) {return barxScale(d[barxColumn]); })
     .attr("y", function (d) {return baryScale(d[baryColumn]); })
     .attr("height", function (d) {return barInnerHeight - baryScale(d[baryColumn])})
+    .attr("fill", "blue")
 }
 
 function barType(d){

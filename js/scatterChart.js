@@ -1,10 +1,10 @@
 
 // set variables for scatter chart
 
-var scatterWidth = 1000;
+var scatterWidth = 960;
 var scatterHeight = 500;
 
-var scatterMargin = {top: 10, bottom: 70, left: 10, right: 10}
+var scatterMargin = {top: 10, bottom: 70, left: 50, right: 10}
 
 var scatterInnerWidth = scatterWidth - scatterMargin.left - scatterMargin.right;
 var scatterInnerHeight = scatterHeight - scatterMargin.top - scatterMargin.bottom;
@@ -15,8 +15,11 @@ var scatterxColumn = "time_weeks";
 var scatteryColumn = "percent_complete";
 var scatterrColumn = "project_cost"
 var scattercolorColumn = "category"
-var scatterXAxisLabelOffset = 55;
+var scatterXAxisLabelOffset = 50;
 var scatterXAxisLabelText = "Time (Weeks)"
+
+var scatterYAxisLabelOffset = 35;
+var scatterYAxisLabelText = "Project Completion (%)"
 
 // define scatter SVG
 var scatterSvg = d3.select(".scatter").append("svg")
@@ -28,22 +31,38 @@ var scatterSvg = d3.select(".scatter").append("svg")
 var scatterG = scatterSvg.append("g")
   .attr("transform", "translate(" + scatterMargin.left + "," + scatterMargin.top + ")");
 
+// Create x axis grouping and append label
 var scatterXAxisGroup = scatterG.append("g")
+  .attr("class", "x axis")
   .attr("transform", "translate(0," + scatterInnerHeight + ")")
-
 var scatterXAxisLabel = scatterXAxisGroup.append("text")
   .style("text-anchor", "middle")
   .attr("transform", "translate(" + (scatterInnerWidth / 2) + "," + scatterXAxisLabelOffset + ")")
   .attr("class", "label")
   .text(scatterXAxisLabelText);
 
+// create y axis grouping and append label
+var scatterYAxisGroup = scatterG.append("g")
+  .attr("class", "y axis")
+var scatterYAxisLabel = scatterYAxisGroup.append("text")
+  .attr("class", "label")
+  .style("text-anchor", "middle")
+  .attr("transform", "translate(-" + scatterYAxisLabelOffset + "," + (scatterInnerHeight / 2) + ") rotate(-90)")
+  .text(scatterYAxisLabelText)
 
+// map the range of the data to pixel space
 var scatterxScale = d3.scale.linear().range([0, scatterInnerWidth])
 var scatteryScale = d3.scale.linear().range([scatterInnerHeight, 0])
 var scatterrScale = d3.scale.linear().range([scatterrMin, scatterrMax])
 var scatterColorScale = d3.scale.category10();
 
-var scatterXAxis = d3.svg.axis().scale(scatterxScale).orient("bottom");
+// map the range of the axis to pixel space and set position
+var scatterXAxis = d3.svg.axis().scale(scatterxScale).orient("bottom")
+  .outerTickSize(1)
+var scatterYAxis = d3.svg.axis().scale(scatteryScale).orient("left")
+  .ticks(10)
+  .tickFormat(d3.format("s"))
+  .outerTickSize(1)
 
 // render the scatter graph
 function scatterRender(data) {
@@ -53,6 +72,7 @@ function scatterRender(data) {
 
     // Call axeies
     scatterXAxisGroup.call(scatterXAxis)
+    scatterYAxisGroup.call(scatterYAxis)
 
     // Bind data
     var circles = scatterG.selectAll("circle").data(data)
@@ -65,7 +85,7 @@ function scatterRender(data) {
       .attr("cx", function (d) {return scatterxScale(d[scatterxColumn]);})
       .attr("cy", function (d) {return scatteryScale(d[scatteryColumn]);})
       .attr("r", function (d) {return scatterrScale(d[scatterrColumn]);})
-      .attr("stroke", function (d) {return scatterColorScale(d[scattercolorColumn])})
+      .attr("fill", function (d) {return scatterColorScale(d[scattercolorColumn])})
 
     //Exit
     circles.exit.remove();

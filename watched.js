@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // Bar chart
 
-var barOuterWidth = 1000;
+var barOuterWidth = 960;
 var barOuterHeight = 500;
 var barMargin = {top: 25, bottom: 25, left: 50, right: 25}
 var barPadding = 0.2;
@@ -14,6 +14,9 @@ var baryColumn = "budget";
 
 var xAxisLabelText = "Year"
 var xAxisLabelOffset = 10;
+
+var yAxisLabelText = "Budget";
+var yAxisLabelOffset = 10;
 
 var barSvg = d3.select(".bar").append("svg")
   .attr("width", barOuterWidth)
@@ -75,7 +78,7 @@ module.exports = {
 },{}],2:[function(require,module,exports){
 // Bar chart
 
-var barOuterWidth = 1000;
+var barOuterWidth = 960;
 var barOuterHeight = 500;
 var barMargin = {top: 50, bottom: 50, left: 50, right: 50}
 var barPadding = 0.2;
@@ -170,7 +173,7 @@ d3.csv("../data/yearOnYear.csv", horizontalBar.horizontalType, horizontalBar.hor
 
 // set variables for scatter chart
 
-var scatterWidth = 1000;
+var scatterWidth = 960;
 var scatterHeight = 500;
 
 var scatterMargin = {top: 10, bottom: 70, left: 50, right: 10}

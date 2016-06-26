@@ -1,17 +1,25 @@
 .title {
-  color: red;
+  text-align: center;
 }
 
 #scatter {
-  border: 1px solid red;
+  border: 1px solid black;
 }
 
 #bar {
-  border: 1px solid red;
+  border: 1px solid black;
+}
+
+#horizontalBar {
+  border: 1px solid black;
 }
 
 circle {
-  fill: hsla(0, 0%, 0%, 0.0);;
-  stroke-width: 3px;
+  /* fill: hsla(0, 0%, 0%, 0.0); */;
+  stroke: black;
+  stroke-width: 1px;
+}
 
+.spacer {
+  padding: 60px;
 }

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel-node",
     "server": "http-server .",
-    "build": "browserify js/learnD3 > bundle.js"
+    "build": "browserify js/learnD3 > bundle.js",
+    "watch": "watchify js/learnD3 -o watched.js -v"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,8 @@
     "jsdom": "^9.2.1",
     "pdf2json": "^1.1.5",
     "pdf2table": "0.0.1",
-    "tabula-js": "^1.0.1"
+    "tabula-js": "^1.0.1",
+    "watchify": "^3.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
