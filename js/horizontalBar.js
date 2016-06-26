@@ -13,6 +13,8 @@ var xAxisLabelOffset = 45;
 var barInnerWidth = barOuterWidth - barMargin.left - barMargin.right;
 var barInnerHeight = barOuterHeight - barMargin.top - barMargin.bottom;
 
+
+
 var barSvg = d3.select(".horizontalBar").append("svg")
   .attr("width", barOuterWidth)
   .attr("height", barOuterHeight)
@@ -36,6 +38,7 @@ var xAxisLabel = barXAxisG.append("text")
 var barYAxisG = barG.append("g")
   .attr("class", "y axis")
 
+var colorScale = d3.scale.linear().range(["blue", "red"])
 
 var barxScale = d3.scale.linear().range([0, barInnerWidth]);
 var baryScale = d3.scale.ordinal().rangeBands([0, barInnerHeight], barPadding);
@@ -46,6 +49,8 @@ var barXAxis = d3.svg.axis().scale(barxScale).orient("bottom")
 var barYAxis = d3.svg.axis().scale(baryScale).orient("left");
 
 function horizontalRender(data) {
+  colorScale.domain([0, d3.max(data, function (d) { return d[barxColumn]; } )]);
+
   barxScale.domain([0, d3.max(data, function (d) { return d[barxColumn]; } )]);
   baryScale.domain(    data.map(function (d) {return d[baryColumn];}));
 
@@ -65,7 +70,8 @@ function horizontalRender(data) {
     .attr("x", 0)
     .attr("y", function (d) {return baryScale(d[baryColumn]); })
     .attr("width", function (d) {return barxScale(d[barxColumn])})
-    .attr("fill", "orange")
+    .attr("fill", function (d) {return colorScale(d[barxColumn])})
+
 }
 
 function horizontalType(d){

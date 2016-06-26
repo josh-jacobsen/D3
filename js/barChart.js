@@ -30,8 +30,6 @@ var barXAxisG = barG.append("g")
 
 var barXAxisLabel = barXAxisG.append("text")
 
-
-
 var barYAxisG = barG.append("g");
 
 var barxScale = d3.scale.ordinal().rangeBands([0, barInnerWidth], barPadding);
